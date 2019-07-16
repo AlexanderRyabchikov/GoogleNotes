@@ -1,10 +1,10 @@
 package com.client.googlenotes.ui.main
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.client.googlenotes.R
+import com.client.googlenotes.ui.base.AbstractActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AbstractActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
