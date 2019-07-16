@@ -175,7 +175,8 @@ dependencies {
 
     // room
     implementation "android.arch.persistence.room:runtime:$libVersions.room"
-    kapt "android.arch.persistence.room:compiler:$libVersions.room" // For Kotlin use kapt instead of annotationProcessor
+    kapt "android.arch.persistence.room:compiler:$libVersions.room"
+    // For Kotlin use kapt instead of annotationProcessor
     // Test helpers
     testImplementation "android.arch.persistence.room:testing:$libVersions.room"
 
