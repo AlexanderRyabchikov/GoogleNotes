@@ -1,0 +1,22 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'pmd'
+
+check.dependsOn 'pmd'
+
+def configDir = "${project.rootDir}/quality/"
+
+task pmd(type: Pmd) {
+    ignoreFailures = false
+    ruleSetFiles = files("$configDir/pmd/pmd_rules.xml")
+    ruleSets = []
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+}
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+}

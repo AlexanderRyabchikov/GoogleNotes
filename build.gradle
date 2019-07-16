@@ -2,14 +2,24 @@
 
 buildscript {
     ext.kotlin_version = '1.3.41'
+    ext {
+        buildVersions = [
+                gradle: '3.4.2',
+                fabric     : '1.27.1'
+        ]
+    }
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath "com.android.tools.build:gradle:$buildVersions.gradle"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.0'
+        classpath "io.fabric.tools:gradle:$buildVersions.fabric"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -19,8 +29,124 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        flatDir {
+            dirs 'libs'
+        }
         
     }
+}
+
+ext {
+
+    keystorePropertiesFile = rootProject.file("keystore.properties")
+    keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+    generateVersionCode = { appName ->
+        def container = ext.appConfig.get(appName)
+        return container.versionMajor * 10000 + container.versionMinor * 1000 +
+                container.versionPatch * 100 + container.versionBuild
+    }
+
+    generateVersionName = { appName ->
+        def container = ext.appConfig.get(appName)
+        return "${container.versionMajor}.${container.versionMinor}.${container.versionPatch}-${generateVersionTimeStamp()}"
+    }
+
+    generateVersionTimeStamp = {
+        def date = new Date()
+        def formattedDate = date.format('yyyy.MM.dd HH.mm')
+        return formattedDate
+    }
+
+    appIdPrefix = "com.client"
+    appNamePrefix = "googlenotes"
+    clientModule = "client"
+
+
+    //Server configuration start
+    appServerConfigDevelopment = "development"
+    appServerConfigProduction  = "production"
+
+
+    //TODO здесь должны быть сервера для хранения записок в firebase
+    serverUrlDevelopment = '""'
+    serverApiDevelopment = '""'
+
+    serverUrlProduction = '""'
+    serverApiProduction = '""'
+    //Server Configuration end
+
+
+    appConfig = [
+            (clientModule): [
+                    applicationName: "$appNamePrefix-$clientModule",
+                    applicationId  : "$appIdPrefix.$appNamePrefix",
+                    versionMajor   : 0,
+                    versionMinor   : 0,
+                    versionPatch   : 1,
+                    versionBuild   : 1
+            ],
+            (appServerConfigDevelopment) : [server: "$serverUrlDevelopment",
+                                            api: "$serverApiDevelopment"
+            ],
+            (appServerConfigProduction) : [server: "$serverUrlProduction",
+                                           api: "$serverApiProduction"
+            ]
+    ]
+
+
+    toolVersions = [
+            android: [
+                    minSdk           : 16,
+                    minProductionSdk : 16,
+                    minDevelopmentSdk: 16,
+                    targetSdk        : 26,
+                    compileSdk       : 28,
+                    buildTools       : '28.0.3'
+            ]
+    ]
+
+    libVersions = [
+            android           : [
+                    multidex: '1.0.3',
+                    support : '27.1.1'
+            ],
+            google            : [
+                    services: '16.0.0',
+                    maps:     '16.1.0'
+            ],
+            firebase          :[
+                    core:     '16.0.7',
+                    messaging:'17.3.4'
+            ],
+            rx                : [
+                    rxJava   : '2.1.13',
+                    rxAndroid: '2.0.2'
+            ],
+            dagger            : '2.15',
+            room              : '1.1.1',
+            glide             : '4.7.1',
+            retrofit          : '2.4.0',
+            okHttp            : '3.10.0',
+            butterKnife       : '8.6.0',
+            imageCropper      : '2.7.0',
+            photoView         : '2.1.3',
+            moxy              : '1.5.3',
+            navigation        : '1.0.0-rc02',
+            permissions       : '3.2.0',
+            slimAdapter       : '2.1.0',
+            fragmentArgs      : '3.0.2',
+            hawk              : '2.0.1',
+            datePicker        : '3.5.2',
+            easyImage         : '2.0.4',
+            multislider       : '1.3.1-SNAPSHOT',
+            fabricVersion     : '2.9.1@aar'
+    ]
 }
 
 task clean(type: Delete) {

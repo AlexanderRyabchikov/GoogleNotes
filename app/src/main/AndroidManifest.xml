@@ -1,10 +1,53 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.booking.googlenotes">
+          xmlns:tools="http://schemas.android.com/tools" package="com.client.googlenotes">
 
-    <application android:allowBackup="true"
-                 android:label="@string/app_name"
-                 android:icon="@mipmap/ic_launcher"
-                 android:roundIcon="@mipmap/ic_launcher_round"
-                 android:supportsRtl="true"
-                 android:theme="@style/AppTheme"/>
+    <!-- PERMISSIONS -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <application
+
+            android:name=".app.App"
+
+            android:allowBackup="false"
+            android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning"/>
+
+    <!-- META -->
+    <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key" />
+    <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="${crashlyticsEnabled}" />
+
+    <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="${firebaseAnalytics}"
+    />
+    <!-- META -->
+
+    <!-- PROVIDERS -->
+    <provider
+            android:name="com.client.googlenotes.data.NotesFileProvider"
+            android:authorities="com.client.googlenotes.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+        <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
+    </provider>
+    <!-- PROVIDERS -->
+
+
+
 </manifest>
