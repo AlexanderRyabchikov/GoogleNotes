@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Google Notes</string>
+
+    <string name="dialog_loading">Загрузка</string>
+    <string name="alert_dialog_title">Ошибка</string>
+    <string name="alert_dialog_button">Ок</string>
+
+
 </resources>

@@ -46,7 +46,7 @@ abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
         alertDialog.dismiss()
     }
 
-    protected fun getAppComponent(): AppComponent = ((App)getApplocation).getAppComponent()
+    protected fun getAppComponent(): AppComponent = (application as App).getAppComponent()
 
     private fun initToolbar() = toolbar?:setupToolbar(toolbar)
 
