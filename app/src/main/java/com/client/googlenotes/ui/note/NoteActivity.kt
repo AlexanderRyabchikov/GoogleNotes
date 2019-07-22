@@ -6,6 +6,8 @@ import com.client.googlenotes.ui.base.AbstractActivity
 
 class NoteActivity : AbstractActivity() {
 
+    override fun getLayoutId(): Int = R.layout.activity_note
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)

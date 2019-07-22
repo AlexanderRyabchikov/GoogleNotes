@@ -5,6 +5,7 @@ import com.client.googlenotes.R
 import com.client.googlenotes.ui.base.AbstractActivity
 
 class MapActivity : AbstractActivity() {
+    override fun getLayoutId(): Int = R.layout.activity_map
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
