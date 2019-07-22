@@ -6,11 +6,12 @@ import android.os.Bundle
 import butterknife.BindView
 import com.client.googlenotes.R
 import com.client.googlenotes.app.App
+import com.client.googlenotes.dagger.core.AppComponent
 
 abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
 
 
-    @BindView(R.id.toolbar) val toolbar: CustomToolbar
+    //@BindView(R.id.toolbar) val toolbar: CustomToolbar
 
     private lateinit var progressDialog: ProgressDialog
 
@@ -18,7 +19,7 @@ abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initToolbar()
+        //initToolbar()
         initDialogs()
         getAppComponent().inject(this)
     }
@@ -48,11 +49,11 @@ abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
 
     protected fun getAppComponent(): AppComponent = (application as App).getAppComponent()
 
-    private fun initToolbar() = toolbar?:setupToolbar(toolbar)
+   /* private fun initToolbar() = toolbar?:setupToolbar(toolbar)
 
     protected fun setupToolbar(toolbar: CustomToolbar) {
 
-    }
+    }*/
 
     protected fun showErrorDialog(message: String){
         alertDialog.setMessage(message)
