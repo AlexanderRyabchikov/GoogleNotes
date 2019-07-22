@@ -54,19 +54,40 @@ abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
 
     }
 
+    protected fun showErrorDialog(message: String){
+        alertDialog.setMessage(message)
+        alertDialog.show()
+    }
+
+    protected fun showErrorDialog(resId: Int){
+        showErrorDialog(getString(resId))
+    }
+
+    fun showLoadingDialog(){
+        if (!progressDialog.isShowing){
+            progressDialog.show()
+        }
+    }
+
+    fun hideLoadingDialog(){
+        if (progressDialog.isShowing){
+            progressDialog.dismiss()
+        }
+    }
+
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showLoadingDialog()
     }
 
     override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        hideLoadingDialog()
     }
 
     override fun showError(error: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showErrorDialog(error)
     }
 
     override fun showError(resId: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showErrorDialog(resId)
     }
 }
