@@ -8,27 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/> <!-- META -->
-    <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_api_key"/>
-    <meta-data
-            android:name="firebase_crashlytics_collection_enabled"
-            android:value="${crashlyticsEnabled}"/>
-    <meta-data
-            android:name="firebase_analytics_collection_enabled"
-            android:value="${firebaseAnalytics}"/> <!-- META -->
-    <!-- PROVIDERS -->
-    <provider
-            android:name=".data.NotesFileProvider"
-            android:authorities="com.client.googlenotes.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true"
-            tools:ignore="WrongManifestParent">
-        <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/paths"/>
-    </provider>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
             android:name=".app.App"
@@ -38,7 +18,33 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
+            tools:replace="android:allowBackup"
             tools:ignore="GoogleAppIndexingWarning">
+
+        <!-- META -->
+        <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="@string/google_api_key"/>
+        <meta-data
+                android:name="firebase_crashlytics_collection_enabled"
+                android:value="${crashlyticsEnabled}"/>
+        <meta-data
+                android:name="firebase_analytics_collection_enabled"
+                android:value="${firebaseAnalytics}"/> <!-- META -->
+
+
+        <!-- PROVIDERS -->
+        <provider
+                android:name=".data.NotesFileProvider"
+                android:authorities="com.client.googlenotes.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true"
+                tools:ignore="WrongManifestParent">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/paths"/>
+        </provider>
+
         <activity android:name=".ui.note.NoteActivity">
         </activity>
         <activity android:name=".ui.map.MapActivity">
