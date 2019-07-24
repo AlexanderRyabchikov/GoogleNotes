@@ -173,12 +173,12 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
 
-    // room
-    implementation "android.arch.persistence.room:runtime:$libVersions.room"
-    kapt "android.arch.persistence.room:compiler:$libVersions.room"
-    // For Kotlin use kapt instead of annotationProcessor
-    // Test helpers
-    testImplementation "android.arch.persistence.room:testing:$libVersions.room"
+    //DATABASE
+
+    implementation "io.requery:requery:$libVersions.requery"
+    implementation "io.requery:requery-kotlin:$libVersions.requery"
+    implementation "io.requery:requery-android:$libVersions.requery"
+    kapt "io.requery:requery-processor:$libVersions.requery"
 
     implementation 'com.github.florent37:runtime-permission-kotlin:1.0.5'
 

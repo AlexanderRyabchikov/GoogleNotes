@@ -129,7 +129,7 @@ ext {
                     rxAndroid: '2.0.2'
             ],
             dagger            : '2.15',
-            room              : '1.1.1',
+            requery           : '1.5.1',
             glide             : '4.7.1',
             retrofit          : '2.4.0',
             okHttp            : '3.10.0',

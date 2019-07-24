@@ -5,14 +5,15 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.client.googlenotes.R
 import com.client.googlenotes.dagger.core.DaggerActivityCoreComponent
 import com.client.googlenotes.ui.base.AbstractActivity
+import com.client.googlenotes.ui.map.mvp.MapContract
 import com.client.googlenotes.ui.map.mvp.MapPresenter
 import javax.inject.Inject
 
-class MapActivity : AbstractActivity() {
+class MapActivity : AbstractActivity(), MapContract.View {
 
     @Inject
     @InjectPresenter
-    private lateinit var presenter: MapPresenter
+    lateinit var presenter: MapPresenter
 
     override fun getLayoutId(): Int = R.layout.activity_map
 

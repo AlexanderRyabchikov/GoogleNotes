@@ -5,14 +5,15 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.client.googlenotes.R
 import com.client.googlenotes.dagger.core.DaggerActivityCoreComponent
 import com.client.googlenotes.ui.base.AbstractActivity
+import com.client.googlenotes.ui.main.mvp.MainContract
 import com.client.googlenotes.ui.main.mvp.MainPresenter
 import javax.inject.Inject
 
-class MainActivity : AbstractActivity() {
+class MainActivity : AbstractActivity(), MainContract.View{
 
     @Inject
     @InjectPresenter
-    private lateinit var presenter: MainPresenter
+    lateinit var presenter: MainPresenter
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
