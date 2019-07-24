@@ -23,6 +23,8 @@ abstract class AbstractBaseActivity : MvpAppCompatActivity() {
     @LayoutRes
     protected abstract fun getLayoutId(): Int
 
-    protected fun injectDependencies() = Log.d("Notes", "no base implementation for dependencies injection")
+    protected open fun injectDependencies() {
+        Log.d("Notes", "no base implementation for dependencies injection")
+    }
 
 }

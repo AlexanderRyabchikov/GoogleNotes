@@ -8,7 +8,7 @@ interface LoadDataView {
 
     fun hideLoading()
 
-    fun showError(error: String)
+    fun showError(error: String?)
 
     fun showError(@StringRes resId: Int)
 }

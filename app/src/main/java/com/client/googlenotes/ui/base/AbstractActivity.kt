@@ -3,10 +3,10 @@ package com.client.googlenotes.ui.base
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.os.Bundle
-import butterknife.BindView
 import com.client.googlenotes.R
 import com.client.googlenotes.app.App
 import com.client.googlenotes.dagger.core.AppComponent
+import com.client.googlenotes.ui.core.ActivityModule
 
 abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
 
@@ -17,7 +17,7 @@ abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
 
     private lateinit var alertDialog: AlertDialog
 
-    protected override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //initToolbar()
         initDialogs()
@@ -55,7 +55,7 @@ abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
 
     }*/
 
-    protected fun showErrorDialog(message: String){
+    protected fun showErrorDialog(message: String?){
         alertDialog.setMessage(message)
         alertDialog.show()
     }
@@ -84,11 +84,13 @@ abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
         hideLoadingDialog()
     }
 
-    override fun showError(error: String) {
+    override fun showError(error: String?) {
         showErrorDialog(error)
     }
 
     override fun showError(resId: Int) {
         showErrorDialog(resId)
     }
+
+    protected fun getActivityModule(): ActivityModule = ActivityModule(this)
 }
