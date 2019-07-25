@@ -1,12 +1,13 @@
-package com.client.googlenotes.data.store.notes
+package com.client.googlenotes.data.store.dataStore
 
 import com.client.googlenotes.data.cache.NotesCache
 import com.client.googlenotes.data.database.models.NoteTableEntity
-import io.fabric.sdk.android.services.network.NetworkUtils
+import com.client.googlenotes.data.store.notes.NotesDataStore
 import io.reactivex.Single
 import javax.inject.Inject
 
-class RemoteDataStore @Inject constructor(private val cache: NotesCache) : NotesDataStore {
+class RemoteDataStore @Inject constructor(private val cache: NotesCache) :
+    NotesDataStore {
 
     override fun putNote(item: NoteTableEntity): Single<NoteTableEntity> {
 

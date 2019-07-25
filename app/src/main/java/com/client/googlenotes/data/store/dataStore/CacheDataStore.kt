@@ -1,11 +1,17 @@
-package com.client.googlenotes.data.store.notes
+package com.client.googlenotes.data.store.dataStore
 
 import com.client.googlenotes.data.cache.NotesCache
+import com.client.googlenotes.data.cache.UserCache
 import com.client.googlenotes.data.database.models.NoteTableEntity
+import com.client.googlenotes.data.database.models.UserEntity
+import com.client.googlenotes.data.store.notes.NotesDataStore
+import com.client.googlenotes.data.store.user.UserDataStore
 import io.reactivex.Single
 import javax.inject.Inject
 
-class CacheDataStore @Inject constructor(private val noteCache: NotesCache) : NotesDataStore {
+class CacheDataStore @Inject constructor(private val noteCache: NotesCache, private val userCache: UserCache) : NotesDataStore, UserDataStore {
+
+
     override fun putNote(item: NoteTableEntity): Single<NoteTableEntity> {
         return Single.defer {
             return@defer noteCache
@@ -36,5 +42,15 @@ class CacheDataStore @Inject constructor(private val noteCache: NotesCache) : No
         }
     }
 
+    override fun getUser(): Single<UserEntity> {
+        return Single.defer {
+            return@defer userCache .get()
+        }
+    }
 
+    override fun putUser(user: UserEntity): Single<UserEntity> {
+        return Single.defer {
+            return@defer userCache.put(user)
+        }
+    }
 }
