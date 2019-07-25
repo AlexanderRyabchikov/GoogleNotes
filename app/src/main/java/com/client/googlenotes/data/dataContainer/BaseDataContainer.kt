@@ -1,6 +1,6 @@
 package com.client.googlenotes.data.dataContainer
 
-class BaseDataContainer<T>(private val data: T?, private val error: Throwable?, private val loading: Boolean) : DataContainer<T> {
+open class BaseDataContainer<T>(private val data: T?, private val error: Throwable?, private val loading: Boolean) : DataContainer<T> {
 
     override fun getDataContainer(): T? = data
 

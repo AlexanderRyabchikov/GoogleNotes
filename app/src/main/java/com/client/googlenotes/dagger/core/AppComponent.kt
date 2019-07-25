@@ -4,6 +4,7 @@ import android.content.Context
 import com.client.googlenotes.app.module.ApiModule
 import com.client.googlenotes.app.module.AppModule
 import com.client.googlenotes.app.module.RepositoryModule
+import com.client.googlenotes.data.repositories.NotesRepository
 import com.client.googlenotes.ui.base.AbstractActivity
 import dagger.Component
 import javax.inject.Singleton
@@ -15,4 +16,6 @@ interface AppComponent {
     //fun apiInterfaces(): ApiInterface
 
     fun inject(activity: AbstractActivity)
+
+    fun notesRepository(): NotesRepository
 }

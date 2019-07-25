@@ -8,5 +8,5 @@ import io.requery.Persistable
 interface NoteTable: Persistable {
 
     @Key
-    fun getId(): Int
+    fun getId(): Long
 }

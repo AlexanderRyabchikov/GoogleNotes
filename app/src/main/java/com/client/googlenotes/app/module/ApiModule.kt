@@ -1,5 +1,6 @@
 package com.client.googlenotes.app.module
 
+import android.content.Context
 import com.client.googlenotes.BuildConfig
 import com.client.googlenotes.data.network.ApiInterface
 import com.client.googlenotes.data.network.ConnectivityInterceptor
@@ -23,6 +24,10 @@ class ApiModule (private val endPoint: String) {
     private val CACHE_SIZE: Long = 10*1024*1024
     private val DATE_FORMAT: String = "yyyy-MM-dd'T'HH:mm:ssZ"
     private val TIMEOUT: Long = 30
+
+    @Provides
+    @Singleton
+    fun provideHttpCache(context: Context): Cache = Cache(context.cacheDir, CACHE_SIZE)
 
 
     @Provides

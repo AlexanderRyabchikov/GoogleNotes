@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import javax.inject.Inject
 
-final class NetworkUtils @Inject constructor(val context: Context){
+class NetworkUtils @Inject constructor(val context: Context){
 
     fun isOffline(): Boolean {
 
