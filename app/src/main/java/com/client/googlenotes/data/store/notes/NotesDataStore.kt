@@ -8,4 +8,8 @@ interface NotesDataStore {
     fun getNotes(): Single<List<NoteTableEntity>>
 
     fun getNote(id: Long): Single<NoteTableEntity>
+
+    fun putNote(item: NoteTableEntity): Single<NoteTableEntity>
+
+    fun putNotes(notes: List<NoteTableEntity>): Single<List<NoteTableEntity>>
 }

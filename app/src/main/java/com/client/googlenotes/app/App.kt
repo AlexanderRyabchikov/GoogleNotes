@@ -24,8 +24,6 @@ class App : MultiDexApplication() {
                 .core(CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build()).build()
         )
 
-
-        initHawk()
         initComponents()
 
     }
@@ -35,10 +33,6 @@ class App : MultiDexApplication() {
             .appModule(AppModule(this))
             .apiModule(ApiModule(/*BuildConfig.ServerUrl + BuildConfig.API*/""))
             .build()
-    }
-
-    private fun initHawk(){
-        Hawk.init(this).build()
     }
 
     fun getAppComponent() :AppComponent = appComponent

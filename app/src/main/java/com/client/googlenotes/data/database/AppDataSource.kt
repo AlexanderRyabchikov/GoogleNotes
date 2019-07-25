@@ -14,9 +14,4 @@ class AppDataSource(val context: Context, model: EntityModel, val version: Int)
         const val DATABASE_VERSION: Int = 1
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        super.onUpgrade(db, oldVersion, newVersion)
-        Hawk.deleteAll()
-    }
-
 }
