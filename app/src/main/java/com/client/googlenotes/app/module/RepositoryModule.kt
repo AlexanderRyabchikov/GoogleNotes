@@ -1,9 +1,9 @@
 package com.client.googlenotes.app.module
 
-import com.client.googlenotes.data.repositories.NotesDefaultRepository
-import com.client.googlenotes.data.repositories.NotesRepository
-import com.client.googlenotes.data.repositories.UserDefaultRepository
-import com.client.googlenotes.data.repositories.UserRepository
+import com.client.googlenotes.data.repositories.notes.NotesDefaultRepository
+import com.client.googlenotes.data.repositories.notes.NotesRepository
+import com.client.googlenotes.data.repositories.user.UserDefaultRepository
+import com.client.googlenotes.data.repositories.user.UserRepository
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton

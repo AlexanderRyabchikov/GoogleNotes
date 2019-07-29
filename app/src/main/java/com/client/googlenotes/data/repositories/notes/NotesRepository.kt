@@ -1,4 +1,4 @@
-package com.client.googlenotes.data.repositories
+package com.client.googlenotes.data.repositories.notes
 
 import com.client.googlenotes.data.database.models.NoteTableEntity
 import io.reactivex.Single

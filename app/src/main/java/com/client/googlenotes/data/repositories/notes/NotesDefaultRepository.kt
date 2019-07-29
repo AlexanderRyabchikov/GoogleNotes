@@ -1,4 +1,4 @@
-package com.client.googlenotes.data.repositories
+package com.client.googlenotes.data.repositories.notes
 
 import com.client.googlenotes.data.database.models.NoteTableEntity
 import com.client.googlenotes.data.store.DataStoreFactory
@@ -6,7 +6,8 @@ import com.client.googlenotes.data.store.notes.NotesDataStore
 import io.reactivex.Single
 import javax.inject.Inject
 
-class NotesDefaultRepository @Inject constructor(private val notesFactory: DataStoreFactory<NotesDataStore>) : NotesRepository{
+class NotesDefaultRepository @Inject constructor(private val notesFactory: DataStoreFactory<NotesDataStore>) :
+    NotesRepository {
 
 
 
