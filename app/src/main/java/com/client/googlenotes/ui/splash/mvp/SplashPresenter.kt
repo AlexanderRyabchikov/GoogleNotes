@@ -19,8 +19,6 @@ class SplashPresenter @Inject constructor(private val userRepository: UserReposi
                 .getUser()
                 .map(mapper::map)
                 .compose(AsyncTransformers.single())
-                .doOnSubscribe { viewState.showLoading() }
-                .doFinally { viewState.hideLoading() }
                 .subscribe({display ->
                     viewState.setName(display.name)
                 }, this::handleError))

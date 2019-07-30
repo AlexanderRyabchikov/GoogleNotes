@@ -2,11 +2,15 @@ package com.client.googlenotes.data.store.dataStore
 
 import com.client.googlenotes.data.cache.NotesCache
 import com.client.googlenotes.data.database.models.NoteTableEntity
+import com.client.googlenotes.data.network.ApiInterface
+import com.client.googlenotes.data.network.NetworkUtils
 import com.client.googlenotes.data.store.notes.NotesDataStore
 import io.reactivex.Single
 import javax.inject.Inject
 
-class RemoteDataStore @Inject constructor(private val cache: NotesCache) :
+class RemoteDataStore @Inject constructor(private val cache: NotesCache,
+                                          private val apiInterface: ApiInterface,
+                                          private val networkUtils: NetworkUtils) :
     NotesDataStore {
 
     override fun putNote(item: NoteTableEntity): Single<NoteTableEntity> {

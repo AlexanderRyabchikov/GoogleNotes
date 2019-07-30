@@ -2,6 +2,7 @@ package com.client.googlenotes.ui.splash
 
 import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.client.googlenotes.R
 import com.client.googlenotes.dagger.core.DaggerActivityCoreComponent
 import com.client.googlenotes.ui.base.AbstractActivity
@@ -19,6 +20,10 @@ class Splash : AbstractActivity(), SplashContract.View {
 
     override fun getLayoutId(): Int = R.layout.activity_splash
 
+
+    @ProvidePresenter
+    fun providePresenter(): SplashPresenter = presenter
+
     override fun injectDependencies(){
         super.injectDependencies()
         DaggerActivityCoreComponent
@@ -34,6 +39,8 @@ class Splash : AbstractActivity(), SplashContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        presenter.onNameRequest()
     }
 
 
