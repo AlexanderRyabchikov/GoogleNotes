@@ -1,10 +1,10 @@
 package com.client.googlenotes.ui.login.mvp
 
-import com.arellomobile.mvp.MvpView
+import com.client.googlenotes.ui.base.LoadDataView
 
 interface LoginContract {
 
-    interface View : MvpView {
+    interface View : LoadDataView {
 
     }
 

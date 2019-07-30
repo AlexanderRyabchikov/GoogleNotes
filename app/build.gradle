@@ -122,14 +122,13 @@ dependencies {
     implementation "com.google.dagger:dagger:$libVersions.dagger"
     implementation "com.google.dagger:dagger-android:$libVersions.dagger"
 
+    // DI
+    kapt "com.google.dagger:dagger-android-processor:$libVersions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
 
     // MVP
     implementation "com.arello-mobile:moxy:$libVersions.moxy"
     implementation "com.arello-mobile:moxy-app-compat:$libVersions.moxy"
-
-    // DI
-    kapt "com.google.dagger:dagger-android-processor:$libVersions.dagger"
-    kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
 
     // MVP
     kapt "com.arello-mobile:moxy-compiler:$libVersions.moxy"

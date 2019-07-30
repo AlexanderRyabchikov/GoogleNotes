@@ -21,7 +21,6 @@ class AppModule (private val context: Context) {
     @Singleton
     fun provideContext(): Context = context
 
-
     @Provides
     @Singleton
     fun providesDataStore(): ReactiveEntityStore<Persistable>{

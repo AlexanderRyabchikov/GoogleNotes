@@ -1,7 +1,7 @@
 package com.client.googlenotes.data.displays
 
-data class UserDisplay (private val id: Long,
-                        private val name: String,
-                        private val phone: String,
-                        private val photo: String,
-                        private val email: String)
+data class UserDisplay (val id: Long,
+                        val name: String,
+                        val phone: String,
+                        val photo: String,
+                        val email: String)

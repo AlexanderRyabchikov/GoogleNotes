@@ -1,10 +1,10 @@
 package com.client.googlenotes.ui.note.mvp
 
-import com.arellomobile.mvp.MvpView
+import com.client.googlenotes.ui.base.LoadDataView
 
 interface NoteContract {
 
-    interface View : MvpView {
+    interface View : LoadDataView {
 
     }
 

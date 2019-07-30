@@ -1,13 +1,12 @@
 package com.client.googlenotes.data.repositories.user
 
 import com.client.googlenotes.data.database.models.UserEntity
-import com.client.googlenotes.data.store.DataStoreFactory
-import com.client.googlenotes.data.store.user.UserDataStore
+import com.client.googlenotes.data.store.user.UserDataStoreFactory
 import io.reactivex.Single
 import javax.inject.Inject
 
 
-class UserDefaultRepository @Inject constructor(private val userFactory: DataStoreFactory<UserDataStore>):
+class UserDefaultRepository @Inject constructor(private val userFactory: UserDataStoreFactory):
     UserRepository {
 
     override fun getUser(): Single<UserEntity> = Single.defer {

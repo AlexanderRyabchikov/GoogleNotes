@@ -1,10 +1,10 @@
 package com.client.googlenotes.ui.splash.mvp
 
-import com.arellomobile.mvp.MvpView
+import com.client.googlenotes.ui.base.LoadDataView
 
 interface SplashContract {
 
-    interface View : MvpView {
+    interface View : LoadDataView {
         fun setName(name: String)
     }
 
