@@ -1,9 +1,10 @@
 package com.client.googlenotes.data.store.notes
 
 import com.client.googlenotes.data.database.models.NoteTableEntity
+import com.client.googlenotes.data.store.DataStore
 import io.reactivex.Single
 
-interface NotesDataStore{
+interface NotesDataStore : DataStore{
 
     fun getNotes(): Single<List<NoteTableEntity>>
 
