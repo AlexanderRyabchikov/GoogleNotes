@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="text_size_large">20sp</dimen>
+
+    <!-- SPLASH -->
+    <dimen name="splash_greeting_horizontal_margin">24dp</dimen>
+    <dimen name="splash_greeting_bottom_margin">15dp</dimen>
+    <!-- SPLASH -->
+</resources>

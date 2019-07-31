@@ -16,4 +16,13 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+
+    <style name="AppTheme.TextAppearance" parent="TextAppearance.AppCompat" />
+
+    <style name="AppTheme.TextAppearance.SplashGreeting" parent="AppTheme.TextAppearance">
+        <item name="android:textColor">@color/toolbar_border</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
