@@ -1,9 +1,8 @@
 package com.client.googlenotes.ui.splash
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.TextView
-import butterknife.BindView
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.client.googlenotes.R
@@ -14,16 +13,10 @@ import com.client.googlenotes.ui.splash.mvp.SplashPresenter
 import javax.inject.Inject
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
+import kotlinx.android.synthetic.main.activity_splash.view.*
 import java.util.*
 
 class Splash : AbstractActivity(), SplashContract.View {
-
-    @BindView(R.id.splash_greeting)
-    private lateinit var textView: TextView
-
-    @BindView(R.id.background_view)
-    private lateinit var view: ImageView
 
     @Inject
     @InjectPresenter
@@ -33,6 +26,10 @@ class Splash : AbstractActivity(), SplashContract.View {
     private val imageShowRunnable: () -> Unit = this::showLogo
 
     override fun getLayoutId(): Int = R.layout.activity_splash
+
+    override fun getCurrentActivity(): Activity {
+        return this
+    }
 
 
     @ProvidePresenter
@@ -50,8 +47,9 @@ class Splash : AbstractActivity(), SplashContract.View {
 
     private fun showLogo() {
         val anim = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
-        view.visibility = View.VISIBLE
-        view.animation = anim
+
+        viewElement().background_view.visibility = View.VISIBLE
+        viewElement().background_view.animation = anim
     }
 
 
@@ -65,7 +63,7 @@ class Splash : AbstractActivity(), SplashContract.View {
 
     override fun setName(name: String) {
 
-        textView.text = when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
+        viewElement().splash_greeting.text = when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
             in 4..11 -> getString(R.string.splash_greeting_user_morning, name)
             in 12..17 -> getString(R.string.splash_greeting_user_day, name)
             in 18..23 -> getString(R.string.splash_greeting_user_evening, name)

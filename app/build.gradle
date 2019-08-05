@@ -85,6 +85,10 @@ android {
             buildConfigField("String", "API", "$appConfig.production.api")
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 repositories {
@@ -136,9 +140,6 @@ dependencies {
     // PERMISSIONS
     implementation "com.github.hotchemi:permissionsdispatcher:$libVersions.permissions"
     kapt "com.github.hotchemi:permissionsdispatcher-processor:$libVersions.permissions"
-
-    // VIEWS BINDING
-    kapt "com.jakewharton:butterknife-compiler:$libVersions.butterKnife"
 
     // IMAGE LOADING
     kapt "com.github.bumptech.glide:compiler:$libVersions.glide"
@@ -206,9 +207,6 @@ dependencies {
     // RXJAVA
     implementation "io.reactivex.rxjava2:rxjava:$libVersions.rx.rxJava"
     implementation "io.reactivex.rxjava2:rxandroid:$libVersions.rx.rxAndroid"
-
-    // VIEWS BINDING
-    implementation "com.jakewharton:butterknife:$libVersions.butterKnife"
 
     // PREFERENCES
     implementation "com.orhanobut:hawk:$libVersions.hawk"

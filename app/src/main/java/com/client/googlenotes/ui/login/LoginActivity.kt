@@ -1,5 +1,6 @@
 package com.client.googlenotes.ui.login
 
+import android.app.Activity
 import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.client.googlenotes.R
@@ -16,6 +17,8 @@ class LoginActivity : AbstractActivity(), LoginContract.View {
     lateinit var presenter: LoginPresenter
 
     override fun getLayoutId(): Int = R.layout.activity_login
+
+    override fun getCurrentActivity(): Activity  = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
