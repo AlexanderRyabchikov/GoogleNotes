@@ -13,25 +13,25 @@ abstract class AbstractBaseActivity : MvpAppCompatActivity() {
 
     private lateinit var binding: ViewDataBinding
 
+    @get:LayoutRes
+    protected abstract val layoutRes: Int
+
+    protected abstract val activity: Activity
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         injectDependencies()
-        setContentView(getLayoutId())
+        setContentView(layoutRes)
     }
 
     override fun onContentChanged(){
         super.onContentChanged()
 
-        binding = DataBindingUtil.setContentView(getCurrentActivity(), getLayoutId())
+        binding = DataBindingUtil.setContentView(activity, layoutRes)
 
     }
 
     protected fun viewElement(): View = binding.root
-
-    protected abstract fun getCurrentActivity(): Activity
-
-    @LayoutRes
-    protected abstract fun getLayoutId(): Int
 
     protected open fun injectDependencies() {
         Log.d("Notes", "no base implementation for dependencies injection")

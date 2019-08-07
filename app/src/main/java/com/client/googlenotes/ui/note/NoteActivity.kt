@@ -16,9 +16,11 @@ class NoteActivity : AbstractActivity(), NoteContract.View {
     @InjectPresenter
     lateinit var presenter: NotePresenter
 
-    override fun getCurrentActivity(): Activity = this
+    override val layoutRes: Int
+        get() = R.layout.activity_note
 
-    override fun getLayoutId(): Int = R.layout.activity_note
+    override val activity: Activity
+        get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

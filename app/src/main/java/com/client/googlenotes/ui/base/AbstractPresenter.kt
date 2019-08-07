@@ -8,7 +8,7 @@ import io.reactivex.disposables.Disposable
 
 abstract class AbstractPresenter<V: MvpView> : MvpPresenter<V>() {
 
-    val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     protected fun subscribe(disposable: Disposable){
         compositeDisposable.add(disposable)

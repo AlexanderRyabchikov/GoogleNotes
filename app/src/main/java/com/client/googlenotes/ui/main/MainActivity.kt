@@ -16,9 +16,11 @@ class MainActivity : AbstractActivity(), MainContract.View{
     @InjectPresenter
     lateinit var presenter: MainPresenter
 
-    override fun getLayoutId(): Int = R.layout.activity_main
+    override val layoutRes: Int
+        get() = R.layout.activity_main
 
-    override fun getCurrentActivity(): Activity = this
+    override val activity: Activity
+        get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -16,9 +16,11 @@ class MapActivity : AbstractActivity(), MapContract.View {
     @InjectPresenter
     lateinit var presenter: MapPresenter
 
-    override fun getCurrentActivity(): Activity = this
+    override val layoutRes: Int
+        get() = R.layout.activity_map
 
-    override fun getLayoutId(): Int = R.layout.activity_map
+    override val activity: Activity
+        get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -16,9 +16,11 @@ class LoginActivity : AbstractActivity(), LoginContract.View {
     @InjectPresenter
     lateinit var presenter: LoginPresenter
 
-    override fun getLayoutId(): Int = R.layout.activity_login
+    override val layoutRes: Int
+        get() = R.layout.activity_login
 
-    override fun getCurrentActivity(): Activity  = this
+    override val activity: Activity
+        get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -25,11 +25,11 @@ class Splash : AbstractActivity(), SplashContract.View {
     private val handler = Handler()
     private val imageShowRunnable: () -> Unit = this::showLogo
 
-    override fun getLayoutId(): Int = R.layout.activity_splash
+    override val layoutRes: Int
+        get() = R.layout.activity_splash
 
-    override fun getCurrentActivity(): Activity {
-        return this
-    }
+    override val activity: Activity
+        get() = this
 
 
     @ProvidePresenter
