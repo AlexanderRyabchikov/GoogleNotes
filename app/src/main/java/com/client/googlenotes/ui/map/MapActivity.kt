@@ -1,5 +1,6 @@
 package com.client.googlenotes.ui.map
 
+import android.app.Activity
 import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.client.googlenotes.R
@@ -15,7 +16,11 @@ class MapActivity : AbstractActivity(), MapContract.View {
     @InjectPresenter
     lateinit var presenter: MapPresenter
 
-    override fun getLayoutId(): Int = R.layout.activity_map
+    override val layoutRes: Int
+        get() = R.layout.activity_map
+
+    override val activity: Activity
+        get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

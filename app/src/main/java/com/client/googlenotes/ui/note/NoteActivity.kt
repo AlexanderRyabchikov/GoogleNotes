@@ -1,5 +1,6 @@
 package com.client.googlenotes.ui.note
 
+import android.app.Activity
 import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.client.googlenotes.R
@@ -15,7 +16,11 @@ class NoteActivity : AbstractActivity(), NoteContract.View {
     @InjectPresenter
     lateinit var presenter: NotePresenter
 
-    override fun getLayoutId(): Int = R.layout.activity_note
+    override val layoutRes: Int
+        get() = R.layout.activity_note
+
+    override val activity: Activity
+        get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

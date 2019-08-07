@@ -1,30 +1,45 @@
 package com.client.googlenotes.ui.base
 
+import android.app.Activity
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.util.Log
-import butterknife.ButterKnife
+import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 
 abstract class AbstractBaseActivity : MvpAppCompatActivity() {
 
+    private lateinit var binding: ViewDataBinding
 
-    protected override fun onCreate(savedInstanceState: Bundle?){
+    @get:LayoutRes
+    protected abstract val layoutRes: Int
+
+    protected abstract val activity: Activity
+
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         injectDependencies()
-        setContentView(getLayoutId())
+        setContentView(layoutRes)
     }
 
     override fun onContentChanged(){
         super.onContentChanged()
-        ButterKnife.bind(this)
+
+        binding = DataBindingUtil.setContentView(activity, layoutRes)
+
     }
 
-    @LayoutRes
-    protected abstract fun getLayoutId(): Int
+    protected fun viewElement(): View = binding.root
 
     protected open fun injectDependencies() {
         Log.d("Notes", "no base implementation for dependencies injection")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.unbind()
     }
 
 }
