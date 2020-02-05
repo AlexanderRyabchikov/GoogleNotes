@@ -10,4 +10,22 @@
     <string name="splash_greeting_user_morning">Доброе утро, %1$s!</string>
     <string name="splash_greeting_user_night">Доброй ночи, %1$s!</string>
 
+    <string name="transition_logo">splashLogo</string>
+    <string name="transition_splash_circle">splashCircle</string>
+
+    <string name="field_error_empty">Поле не может быть пустым</string>
+    <string name="field_error_min_length">Минимальная длина %1$d символов</string>
+    <string name="field_error_email">Неправильный email</string>
+    <string name="field_error_phone">Неправильный номер телефона</string>
+
+
+    <!--LOGIN SCREEN-->
+    <string name="login_forget_password">Забыли пароль?</string>
+    <string name="login_password_restore_success_request">Ссылка на восстановление пароля успешно отправлена</string>
+    <string name="login_have_not_account">У меня ЕЩЕ нет аккаунта</string>
+
+    <!-- HINTS-->
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">Пароль</string>
+    <string name="hint_phone">Номер телефона</string>
 </resources>

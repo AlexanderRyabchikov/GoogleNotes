@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorControlNormal</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.Splash" parent="AppTheme">
@@ -20,9 +22,23 @@
     <style name="AppTheme.TextAppearance" parent="TextAppearance.AppCompat" />
 
     <style name="AppTheme.TextAppearance.SplashGreeting" parent="AppTheme.TextAppearance">
-        <item name="android:textColor">@color/toolbar_border</item>
+        <item name="android:textColor">@color/black30</item>
         <item name="android:textSize">@dimen/text_size_large</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextInputLogin">
+        <item name="colorAccent">@color/black40</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="android:textColor">@color/black50</item>
+        <item name="android:background">@color/white70</item>
+        <item name="android:textColorHint">@color/black40</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="TextInputLoginErrorAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/orange_red</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>

@@ -10,9 +10,6 @@ import com.client.googlenotes.ui.core.ActivityModule
 
 abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
 
-
-    //@BindView(R.id.toolbar) val toolbar: CustomToolbar
-
     private lateinit var progressDialog: ProgressDialog
 
     private lateinit var alertDialog: AlertDialog
@@ -48,12 +45,6 @@ abstract class AbstractActivity: AbstractBaseActivity(), LoadDataView {
     }
 
     protected fun getAppComponent(): AppComponent = (application as App).getAppComponent()
-
-   /* private fun initToolbar() = toolbar?:setupToolbar(toolbar)
-
-    protected fun setupToolbar(toolbar: CustomToolbar) {
-
-    }*/
 
     protected fun showErrorDialog(message: String?){
         alertDialog.setMessage(message)

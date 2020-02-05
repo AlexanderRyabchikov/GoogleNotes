@@ -1,16 +1,14 @@
 package com.client.googlenotes.ui.main
 
-import android.app.Activity
-import android.os.Bundle
-import com.arellomobile.mvp.presenter.InjectPresenter
 import com.client.googlenotes.R
 import com.client.googlenotes.dagger.core.DaggerActivityCoreComponent
 import com.client.googlenotes.ui.base.AbstractActivity
 import com.client.googlenotes.ui.main.mvp.MainContract
 import com.client.googlenotes.ui.main.mvp.MainPresenter
+import moxy.presenter.InjectPresenter
 import javax.inject.Inject
 
-class MainActivity : AbstractActivity(), MainContract.View{
+class MainActivity : AbstractActivity(), MainContract {
 
     @Inject
     @InjectPresenter
@@ -18,14 +16,6 @@ class MainActivity : AbstractActivity(), MainContract.View{
 
     override val layoutRes: Int
         get() = R.layout.activity_main
-
-    override val activity: Activity
-        get() = this
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
 
     override fun injectDependencies(){
         super.injectDependencies()

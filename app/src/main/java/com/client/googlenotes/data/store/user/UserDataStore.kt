@@ -6,6 +6,7 @@ import io.reactivex.Single
 
 interface UserDataStore: DataStore {
 
+    fun getUserName(): Single<String>
     fun getUser(): Single<UserEntity>
     fun putUser(user: UserEntity): Single<UserEntity>
 

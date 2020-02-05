@@ -3,6 +3,7 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ffffff</color>
+    <color name="colorControlNormal">@color/black40</color>
 
     <color name="white">#FFFFFFFF</color>
     <color name="white90">#E6FFFFFF</color>
@@ -31,4 +32,9 @@
 
     <color name="toolbar_background">#F3F3F3</color>
     <color name="toolbar_border">#D8D8D8</color>
+
+    <color name="light_blue_grey">#c4c9cd</color>
+    <color name="color_disabled">@color/light_blue_grey</color>
+
+    <color name="orange_red">#f25137</color>
 </resources>

@@ -17,6 +17,12 @@ class UserDefaultRepository @Inject constructor(private val userFactory: DataSto
     }
 
 
+    override fun getUserName(): Single<String>  = Single.defer {
+        return@defer userFactory
+            .create()
+            .getUserName()
+    }
+
     override fun putUser(user: UserEntity): Single<UserEntity> = Single.defer {
 
             return@defer userFactory

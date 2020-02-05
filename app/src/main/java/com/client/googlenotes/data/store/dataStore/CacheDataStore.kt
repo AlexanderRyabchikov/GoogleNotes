@@ -2,6 +2,7 @@ package com.client.googlenotes.data.store.dataStore
 
 import com.client.googlenotes.data.cache.NotesCache
 import com.client.googlenotes.data.cache.UserCache
+import com.client.googlenotes.data.customException.NoSuchUserException
 import com.client.googlenotes.data.database.models.NoteTableEntity
 import com.client.googlenotes.data.database.models.UserEntity
 import com.client.googlenotes.data.store.notes.NotesDataStore
@@ -43,14 +44,33 @@ class CacheDataStore @Inject constructor(private val noteCache: NotesCache, priv
     }
 
     override fun getUser(): Single<UserEntity> {
-        return Single.defer {
-            return@defer userCache .get()
+
+        when (val entity = userCache.get()) {
+            null ->  return Single.error(NoSuchUserException())
+            else ->  return Single.just(entity)
         }
+
     }
 
     override fun putUser(user: UserEntity): Single<UserEntity> {
         return Single.defer {
             return@defer userCache.put(user)
+        }
+    }
+
+    override fun getUserName(): Single<String> {
+
+        return Single.fromCallable{
+
+            val entity: UserEntity? = userCache.get()
+            if (entity == null || entity.getName().isEmpty()) {
+
+                return@fromCallable "Гость"
+
+            } else {
+                return@fromCallable entity.getName()
+            }
+
         }
     }
 }

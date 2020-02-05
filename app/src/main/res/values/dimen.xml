@@ -3,9 +3,17 @@
 
 
     <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
+
+    <integer name="splash_animation_duration_ms">700</integer>
+
+    <dimen name="fabButtonSize">66dp</dimen>
 
     <!-- SPLASH -->
     <dimen name="splash_greeting_horizontal_margin">24dp</dimen>
-    <dimen name="splash_greeting_bottom_margin">15dp</dimen>
+    <dimen name="splash_greeting_bottom_margin">150dp</dimen>
+    <dimen name="splash_padding_top">160dp</dimen>
+    <dimen name="width_10dp">10dp</dimen>
+    <dimen name="height_10dp">10dp</dimen>
     <!-- SPLASH -->
 </resources>

@@ -26,7 +26,23 @@ android {
         resConfigs("ru")
 
         vectorDrawables.useSupportLibrary = true
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        disableEmptyStrategyCheck: 'false',
+                        enableEmptyStrategyHelper: 'true',
+                        defaultMoxyStrategy: 'moxy.viewstate.strategy.OneExecutionStateStrategy'
+                ]
+            }
+        }
     }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
 
 
     signingConfigs {
@@ -108,34 +124,32 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     // MULTIDEX
-    implementation "com.android.support:multidex:$libVersions.android.multidex"
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     // SUPPORT
-    implementation "com.android.support:appcompat-v7:$libVersions.android.support"
-    implementation "com.android.support:cardview-v7:$libVersions.android.support"
-    implementation "com.android.support:recyclerview-v7:$libVersions.android.support"
-    implementation "com.android.support:design:$libVersions.android.support"
-    implementation "com.android.support:exifinterface:$libVersions.android.support"
-    implementation "com.android.support:support-vector-drawable:$libVersions.android.support"
-    implementation "com.android.support:support-v13:$libVersions.android.support"
-    implementation 'com.android.support:support-v4:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "androidx.appcompat:appcompat:$libVersions.androidx.appcompat"
+    implementation "androidx.recyclerview:recyclerview:$libVersions.androidx.recyclerview"
+    implementation "androidx.cardview:cardview:$libVersions.androidx.cardview"
+    implementation "com.google.android.material:material:$libVersions.androidx.material"
+    implementation "androidx.annotation:annotation:$libVersions.androidx.annotation"
+    implementation "androidx.constraintlayout:constraintlayout:$libVersions.androidx.constraintLayout"
+    implementation "androidx.multidex:multidex:$libVersions.androidx.multidex"
+    implementation "androidx.browser:browser:$libVersions.androidx.browser"
+    implementation "androidx.vectordrawable:vectordrawable:$libVersions.androidx.vectordrawable"
+    implementation "androidx.navigation:navigation-fragment:$libVersions.androidx.navigation"
+    implementation "androidx.navigation:navigation-ui:$libVersions.androidx.navigation"
 
 
     // DI
     implementation "com.google.dagger:dagger:$libVersions.dagger"
     implementation "com.google.dagger:dagger-android:$libVersions.dagger"
-
-    // DI
     kapt "com.google.dagger:dagger-android-processor:$libVersions.dagger"
     kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
 
-    // MVP
-    implementation "com.arello-mobile:moxy:$libVersions.moxy"
-    implementation "com.arello-mobile:moxy-app-compat:$libVersions.moxy"
-
-    // MVP
-    kapt "com.arello-mobile:moxy-compiler:$libVersions.moxy"
+    implementation 'com.github.moxy-community:moxy:2.0-alpha05'
+    implementation 'com.github.moxy-community:moxy-material:2.0-alpha05'
+    kapt 'com.github.moxy-community:moxy-compiler:2.0-alpha05'
+    implementation 'com.github.moxy-community:moxy-androidx:2.0-alpha05'
 
     // PERMISSIONS
     implementation "com.github.hotchemi:permissionsdispatcher:$libVersions.permissions"
@@ -173,14 +187,14 @@ dependencies {
     implementation "com.google.android.gms:play-services-gcm:$libVersions.google.services"
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
     implementation "pub.devrel:easypermissions:1.2.0"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "com.github.siyamed:android-shape-imageview:0.9.3"
 
     // use -ktx for Kotlin
-    implementation "android.arch.navigation:navigation-ui:$libVersions.navigation"
-    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation 'androidx.navigation:navigation-ui:2.0.0-rc02'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
 
     //DATABASE
@@ -207,6 +221,8 @@ dependencies {
     // RXJAVA
     implementation "io.reactivex.rxjava2:rxjava:$libVersions.rx.rxJava"
     implementation "io.reactivex.rxjava2:rxandroid:$libVersions.rx.rxAndroid"
+    implementation "io.reactivex.rxjava2:rxkotlin:$libVersions.rx.rxKotlin"
+
 
     // PREFERENCES
     implementation "com.orhanobut:hawk:$libVersions.hawk"
@@ -216,7 +232,7 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$libVersions.firebase.core"
     implementation "com.google.android.gms:play-services-location:$libVersions.google.services"
     implementation "com.google.android.gms:play-services-gcm:$libVersions.google.services"
-    implementation "com.android.support:design:$libVersions.android.support"
+    implementation 'com.google.android.material:material:1.0.0'
 
     // IMAGE LOADING
     implementation "com.github.bumptech.glide:glide:$libVersions.glide"

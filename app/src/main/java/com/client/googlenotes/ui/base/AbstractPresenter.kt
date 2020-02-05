@@ -1,10 +1,10 @@
 package com.client.googlenotes.ui.base
 
-import com.arellomobile.mvp.MvpPresenter
-import com.arellomobile.mvp.MvpView
 import com.client.googlenotes.data.dataContainer.BaseDataContainer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import moxy.MvpPresenter
+import moxy.MvpView
 
 abstract class AbstractPresenter<V: MvpView> : MvpPresenter<V>() {
 

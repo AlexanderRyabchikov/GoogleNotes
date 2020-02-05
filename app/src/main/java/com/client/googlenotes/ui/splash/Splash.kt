@@ -1,41 +1,40 @@
 package com.client.googlenotes.ui.splash
 
-import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
+import android.view.animation.AnimationUtils
 import com.client.googlenotes.R
 import com.client.googlenotes.dagger.core.DaggerActivityCoreComponent
 import com.client.googlenotes.ui.base.AbstractActivity
+import com.client.googlenotes.ui.extension.show
 import com.client.googlenotes.ui.splash.mvp.SplashContract
 import com.client.googlenotes.ui.splash.mvp.SplashPresenter
-import javax.inject.Inject
-import android.view.View
-import android.view.animation.AnimationUtils
-import kotlinx.android.synthetic.main.activity_splash.view.*
+import kotlinx.android.synthetic.main.activity_splash.*
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import java.util.*
+import javax.inject.Inject
 
-class Splash : AbstractActivity(), SplashContract.View {
+class Splash : AbstractActivity(), SplashContract {
+
+    private val handler = Handler()
+    private val logoShowRunnable: () -> Unit = this::showLogo
 
     @Inject
     @InjectPresenter
     lateinit var presenter: SplashPresenter
 
-    private val handler = Handler()
-    private val imageShowRunnable: () -> Unit = this::showLogo
+    @Inject
+    lateinit var router: SplashRouter
 
     override val layoutRes: Int
         get() = R.layout.activity_splash
-
-    override val activity: Activity
-        get() = this
 
 
     @ProvidePresenter
     fun providePresenter(): SplashPresenter = presenter
 
-    override fun injectDependencies(){
+    override fun injectDependencies() {
         super.injectDependencies()
         DaggerActivityCoreComponent
             .builder()
@@ -45,25 +44,16 @@ class Splash : AbstractActivity(), SplashContract.View {
             .inject(this)
     }
 
-    private fun showLogo() {
-        val anim = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
-
-        viewElement().background_view.visibility = View.VISIBLE
-        viewElement().background_view.animation = anim
-    }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
 
         presenter.onNameRequest()
+        presenter.checkAuthUser()
     }
-
 
     override fun setName(name: String) {
 
-        viewElement().splash_greeting.text = when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
+        splash_greeting.text = when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
             in 4..11 -> getString(R.string.splash_greeting_user_morning, name)
             in 12..17 -> getString(R.string.splash_greeting_user_day, name)
             in 18..23 -> getString(R.string.splash_greeting_user_evening, name)
@@ -71,15 +61,27 @@ class Splash : AbstractActivity(), SplashContract.View {
         }
     }
 
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            handler.post(logoShowRunnable)
+        }
 
-    public override fun onDestroy() {
-        super.onDestroy()
-        handler.removeCallbacksAndMessages(null)
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        if (hasFocus) {
-            handler.post(imageShowRunnable)
-        }
+    private fun showLogo() {
+        val anim = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
+        background_view.show()
+        background_view.animation = anim
+        splash_greeting.show()
+        splash_greeting.animation = anim
+    }
+
+    override fun completeLoading() {
+        router.startMainActivity()
+    }
+
+    override fun openAuthScreen() {
+        router.startLoginActivity()
     }
 }

@@ -1,10 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.login.LoginActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.login.LoginActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/splash_label"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.client.googlenotes.ui.view.checkabletextinput.CheckableTextInputLayout
+        android:id="@+id/textInputLayoutEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/hint_email"
+        android:theme="@style/TextInputLogin"
+        app:errorTextAppearance="@style/TextInputLoginErrorAppearance"
+        app:fieldType="email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/background_view">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editTextLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:textColor="@color/black40"
+            android:inputType="textEmailAddress"
+            tools:ignore="Autofill"
+            android:importantForAutofill="no"
+            android:paddingTop="12dp"/>
+
+    </com.client.googlenotes.ui.view.checkabletextinput.CheckableTextInputLayout>
+
+    <com.client.googlenotes.ui.view.checkabletextinput.CheckableTextInputLayout
+        android:id="@+id/textInputLayoutPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/hint_password"
+        android:theme="@style/TextInputLogin"
+        app:errorTextAppearance="@style/TextInputLoginErrorAppearance"
+        app:fieldType="password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editTextLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:textColor="@color/black40"
+            android:inputType="textPassword"/>
+
+    </com.client.googlenotes.ui.view.checkabletextinput.CheckableTextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonForgetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:minHeight="24dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="@color/black40"
+        android:text="@string/login_forget_password"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_caption"
+        app:layout_constraintStart_toStartOf="@id/textInputLayoutPassword"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"/>
+
+
+    <com.client.googlenotes.ui.view.ProgressFab
+        android:id="@+id/buttonLogin"
+        android:layout_width="@dimen/fabButtonSize"
+        android:layout_height="@dimen/fabButtonSize"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        app:backgroundTint="@drawable/selector_white"
+        app:elevation="0dp"
+        app:fabCustomSize="@dimen/fabButtonSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_arrow_copy"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

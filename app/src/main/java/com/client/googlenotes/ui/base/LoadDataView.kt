@@ -1,8 +1,12 @@
 package com.client.googlenotes.ui.base
 
-import android.support.annotation.StringRes
-import com.arellomobile.mvp.MvpView
+import androidx.annotation.StringRes
+import moxy.MvpView
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
+
+@StateStrategyType(OneExecutionStateStrategy::class)
 interface LoadDataView : MvpView {
 
     fun showLoading()
